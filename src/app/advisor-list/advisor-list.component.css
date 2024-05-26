@@ -1,0 +1,11 @@
+.table-layout-fixed {
+    table-layout: fixed;
+  }
+  
+  .table-layout-fixed th,
+  .table-layout-fixed td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  

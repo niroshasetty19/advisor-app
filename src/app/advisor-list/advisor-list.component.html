@@ -1,0 +1,33 @@
+<div class="container">
+    <h2 class="text-center mb-4">Advisor List</h2>
+    <table class="table table-striped table-layout-fixed">
+      <thead>
+        <tr>
+          <th class="w-25">Name</th>
+          <th class="w-15">SIN</th>
+          <th class="w-25">Address</th>
+          <th class="w-15">Phone</th>
+          <th class="w-20">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let advisor of advisors">
+          <td class="text-nowrap"><a [routerLink]="['/advisors', advisor.id]" class="text-decoration-none">{{ advisor.name }}</a></td>
+          <td class="text-nowrap">{{ advisor.sin | maskSin }}</td>
+          <td class="text-nowrap">
+            <span *ngIf="advisor.address; else emptyCell">{{ advisor.address }}</span>
+            <ng-template #emptyCell>&nbsp;</ng-template>
+          </td>
+          <td class="text-nowrap">
+            <span *ngIf="advisor.phone; else emptyCell">{{ advisor.phone | maskPhone }}</span>
+            <ng-template #emptyCell>&nbsp;</ng-template>
+          </td>
+          <td class="text-nowrap">
+            <button class="btn btn-danger btn-sm me-2" (click)="deleteAdvisor(advisor)">Delete</button>
+            <a [routerLink]="['/advisors', advisor.id, 'edit']" class="btn btn-primary btn-sm">Edit</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
